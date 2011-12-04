@@ -3,11 +3,19 @@ class Users < ActiveRecord::Base
     
     email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     
+    #Postal Code regex - "A1A 2B2"
+    postco_regex = /[A-Z]+[0-9]+[A-Z]+\s+[0-9]+[A-Z]+[0-9]/
+    
+    #Phone number regex - "(111)111-1111"
+    phone_regex = /\A[(]+[0-9]{3}+[)]+[0-9]{3}+-[0-9]{4}/
+    
     validates :first, 
-        :presence => true
+        :presence => true, 
+        :length => { :maximum => 50 }
     
     validates :last, 
-        :presence => true
+        :presence => true,
+        :length => { :maximum => 50 }
     
     validates :email, 
         :presence => true, 
