@@ -63,7 +63,7 @@ end
 
 # == Schema Information
 #
-# Table name: users
+# Table name: user
 #
 #  id         :integer         not null, primary key
 #  first      :string(255)
