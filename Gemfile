@@ -35,7 +35,6 @@ group :development do
 end
 
 group :test do
-	gem 'factory_girl_rails'
 	gem 'rspec', '2.7.0'
 	gem 'webrat'
 end
