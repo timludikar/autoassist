@@ -1,7 +1,10 @@
 Autoassist::Application.routes.draw do
+  resources :users
+
     #resources :users
     
     match '/profile/:id', :to => 'users#show'
+    match '/signup', :to => 'users#new'
     #get "pages/home"
 
   # The priority is based upon order of creation:
