@@ -1,4 +1,6 @@
 Autoassist::Application.routes.draw do
+  resources :users
+
     #resources :users
     
     match '/profile/:id', :to => 'users#show'
