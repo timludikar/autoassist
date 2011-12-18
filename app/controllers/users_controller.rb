@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-
+      @title = "#{@user.first} #{@user.last}"
+      
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @user }
@@ -42,15 +43,20 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    respond_to do |format|
+      #respond_to do |format|
       if @user.save
-        format.html { redirect_to(@user, :notice => 'User was successfully created.') }
-        format.xml  { render :xml => @user, :status => :created, :location => @user }
+          user_login @user
+          redirect_to @user
+          
+          #format.html { redirect_to(@user, :notice => 'User was successfully created.') }
+          #format.xml  { render :xml => @user, :status => :created, :location => @user }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+          @title = "Sign up"
+          render 'new'
+          #format.html { render :action => "new" }
+          #format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
-    end
+      #end
   end
 
   # PUT /users/1
@@ -80,4 +86,8 @@ class UsersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+    
+    def login
+        
+    end
 end
