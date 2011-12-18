@@ -47,6 +47,8 @@ class UsersController < ApplicationController
       if @user.save
           user_login @user
           redirect_to @user
+          UserMailer.welcome_email(@user).deliver
+          
           
           #format.html { redirect_to(@user, :notice => 'User was successfully created.') }
           #format.xml  { render :xml => @user, :status => :created, :location => @user }

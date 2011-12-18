@@ -92,6 +92,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  mail
   rails (= 3.0.1)
   rspec (= 2.7.0)
   rspec-rails (= 2.7.0)

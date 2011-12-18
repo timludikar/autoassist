@@ -7,8 +7,8 @@ class SessionsController < ApplicationController
         user = User.authenicate(params[:session][:email], params[:session][:password])
         
         if user.nil?
-            flash.now[:error] = "Invalid email/password combination"
             @title = "Sign in"
+            flash.now[:error] = "Invalid email/password combination"
             redirect_to login_path
         else
             user_login(user)
