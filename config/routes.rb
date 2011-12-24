@@ -1,13 +1,19 @@
 Autoassist::Application.routes.draw do
 
-    resources :users 
-    resources :sessions, :only => [:new, :create, :destroy]
+    resources :user_sessions
+    resources :users
+    resource :user, :as => 'account'
+    #resources :sessions, :only => [:new, :create, :destroy]
 
+    match 'login' => "user_sessions#new",       :as => :login
+    match 'logout' => "user_sessions#destroy",  :as => :logout
+    match 'signup' => 'users#new',              :as => :signup
+    
     #resources :users
     
-    match '/signup', :to => 'users#new'
-    match '/login', :to => 'sessions#new'
-    match '/logout', :to => 'sessions#destroy'
+    #match '/signup', :to => 'users#new'
+    #match '/login', :to => 'sessions#new'
+    #match '/logout', :to => 'sessions#destroy'
     
     #get "pages/home"
 
