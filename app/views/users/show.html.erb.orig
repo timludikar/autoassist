@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+<%= @user.last %>, <%= @user.first %> - <%= @user.email %>
+=======
 <p>
   <b>Email:</b>
   <%=h @user.email %>
@@ -23,3 +26,4 @@
   <%=h @user.current_login_at %>
 </p>
 <%= link_to 'Edit', edit_account_path %>
+>>>>>>> Users

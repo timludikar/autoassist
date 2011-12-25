@@ -1,6 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.1'
+gem 'mail'
+gem 'authlogic'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -35,6 +37,5 @@ group :development do
 end
 
 group :test do
-	gem 'rspec', '2.7.0'
 	gem 'webrat'
 end
