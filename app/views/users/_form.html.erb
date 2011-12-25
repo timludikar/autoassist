@@ -1,4 +1,4 @@
-<%= render "shared/error_messages", :target => @user %>
+<%= render "layouts/error_messages", :target => @user %>
 
 <p>
   <%= form.label :first %><br />
@@ -21,7 +21,7 @@
   <%= form.text_field :postcode %>
 </p>
 <p>
-  <%= form.label :phonenumber %><br />
+  <%= form.label :phone_number %><br />
   <%= form.text_field :phone_number %>
 </p>
 <p>

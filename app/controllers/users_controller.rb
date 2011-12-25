@@ -24,10 +24,12 @@ class UsersController < ApplicationController
     
     def show
         @user = current_user
+        @title = "#{@user.first} #{@user.last}"
     end
     
     def edit
         @user = current_user
+        @title = "#{@user.first} #{@user.last}"    
     end
     
     def update
