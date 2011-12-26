@@ -1,5 +1,9 @@
 Autoassist::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
     resources :user_sessions
     resources :users
     resource :user, :as => 'account'
