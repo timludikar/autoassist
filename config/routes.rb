@@ -1,8 +1,12 @@
 Autoassist::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  resources :roles
+
   ActiveAdmin.routes(self)
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :admin_users, ActiveAdmin::Devise.config, ActiveAdmin::Devise.config
 
     resources :user_sessions
     resources :users

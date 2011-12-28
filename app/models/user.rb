@@ -1,5 +1,6 @@
 require 'digest'
 class User < ActiveRecord::Base
+    has_and_belongs_to_many :roles
     
     acts_as_authentic do |c|
     end # block optional
@@ -17,4 +18,7 @@ class User < ActiveRecord::Base
     validates :phone_number, :presence => true, :format => { :with => phone_regex }
     validates :prov, :presence => true
 
+    def role?(role)
+        return !!self.roles.find_by_name(role.to_s.camelize)
+    end
 end
