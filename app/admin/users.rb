@@ -44,9 +44,11 @@ ActiveAdmin.register User do
         
         panel "User Statistics" do
             attributes_table_for user do
-                row("Login count") { user.login_count }
-                row("Current login") { user.current_login_at }
-                row("Last login") { user.last_login_at }
+                row("Login count") { user.sign_in_count }
+                row("Current IP") { user.current_sign_in_ip }
+                row("Last IP") { user.last_sign_in_ip }
+                row("Current login") { user.current_sign_in_at }
+                row("Last login") { user.last_sign_in_at }
                 row("Created on") { user.created_at }
                 row("Updated on") { user.updated_at }
             end

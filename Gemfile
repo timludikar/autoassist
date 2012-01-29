@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.1'
 gem 'mail'
-gem 'authlogic'
+#gem 'authlogic'
 gem 'activeadmin'
 
 # Bundle edge Rails instead:

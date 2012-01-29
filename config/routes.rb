@@ -1,19 +1,22 @@
 Autoassist::Application.routes.draw do
 
+  devise_for :users do
+      get "/login", :to => "devise/sessions#new"
+      get "/signup", :to => "devise/registrations#new"
+      delete "/logout" => "devise/sessions#destroy"
+  end
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-    resources :user_sessions
-    resources :users
-    resource :user, :as => 'account'
+    #resources :user_sessions
+    resources :users, :only => ["show", "edit", "update"], :as => :profile, :path => '$'
+    #match 'profile/:id' => 'users#show', :as => :profile
+    
+    #resource :user, :as => 'account'
     #resources :sessions, :only => [:new, :create, :destroy]
 
-    match 'login' => "user_sessions#new",       :as => :login
-    match 'logout' => "user_sessions#destroy",  :as => :logout
-    match 'signup' => 'users#new',              :as => :signup
-    
-    #resources :users
     
     #match '/signup', :to => 'users#new'
     #match '/login', :to => 'sessions#new'

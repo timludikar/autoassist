@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111225052929) do
+ActiveRecord::Schema.define(:version => 20120126031950) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -45,16 +45,6 @@ ActiveRecord::Schema.define(:version => 20111225052929) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
-  create_table "user_sessions", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "session_id", :null => false
-    t.text     "data"
-  end
-
-  add_index "user_sessions", ["session_id"], :name => "index_user_sessions_on_session_id"
-  add_index "user_sessions", ["updated_at"], :name => "index_user_sessions_on_updated_at"
-
   create_table "users", :force => true do |t|
     t.string   "first"
     t.string   "last"
@@ -63,19 +53,21 @@ ActiveRecord::Schema.define(:version => 20111225052929) do
     t.string   "postcode"
     t.string   "phone_number"
     t.string   "prov"
-    t.string   "email",                              :null => false
-    t.string   "crypted_password",                   :null => false
-    t.string   "password_salt",                      :null => false
-    t.string   "persistence_token",                  :null => false
-    t.string   "single_access_token",                :null => false
-    t.string   "perishable_token",                   :null => false
-    t.integer  "login_count",         :default => 0, :null => false
-    t.integer  "failed_login_count",  :default => 0, :null => false
-    t.datetime "last_request_at"
-    t.datetime "current_login_at"
-    t.datetime "last_login_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email",                                 :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end

@@ -40,8 +40,6 @@ GEM
     annotate (2.4.0)
     arel (1.0.1)
       activesupport (~> 3.0.0)
-    authlogic (2.1.6)
-      activesupport
     bcrypt-ruby (3.0.1)
     builder (2.1.2)
     devise (1.5.3)
@@ -132,7 +130,6 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   annotate
-  authlogic
   mail
   rails (= 3.0.1)
   rspec-rails (= 2.7.0)
