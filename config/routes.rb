@@ -11,9 +11,10 @@ Autoassist::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
     #resources :user_sessions
-    resources :users, :only => ["show", "edit", "update"], :as => :profile, :path => '$'
-    #match 'profile/:id' => 'users#show', :as => :profile
-    
+    #resources :users, :only => ["show", "edit", "update"], :as => :profile, :path => 'profile/'
+    # match '/:id' => 'users#show', :as => :p, path => '$/'
+    match 'myaccount/' => 'users#show', :as => :profile, :via => :get
+    match 'myaccount/update' => 'users#edit', :as => :edit_profile, :via => :put
     #resource :user, :as => 'account'
     #resources :sessions, :only => [:new, :create, :destroy]
 
