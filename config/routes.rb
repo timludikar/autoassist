@@ -1,18 +1,29 @@
 Autoassist::Application.routes.draw do
 
+
   devise_for :users do
+
+    #devise_for :users do
       get "/login", :to => "devise/sessions#new"
       get "/signup", :to => "devise/registrations#new"
       delete "/logout" => "devise/sessions#destroy"
-  end
+    end
 
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+    
+    #resources :users #do
+    resources :articles
+        #end
+    
+    #match 'articles' => 'articles#index', :as => :articles, :via => :get
+    #match 'articles' => 'articles#new', :as => :new_articles, :via => :post
 
     #resources :user_sessions
     #resources :users, :only => ["show", "edit", "update"], :as => :profile, :path => 'profile/'
     # match '/:id' => 'users#show', :as => :p, path => '$/'
+    
     match 'myaccount/' => 'users#show', :as => :profile, :via => :get
     match 'myaccount/update' => 'users#edit', :as => :edit_profile, :via => :put
     #resource :user, :as => 'account'
@@ -74,7 +85,7 @@ Autoassist::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "pages#home"
+    root :to => "pages#home"#, :controller => "articles"
 
   # See how all your routes lay out with "rake routes"
 

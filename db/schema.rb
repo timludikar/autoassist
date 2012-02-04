@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131025710) do
+ActiveRecord::Schema.define(:version => 20120204204159) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -45,6 +45,23 @@ ActiveRecord::Schema.define(:version => 20120131025710) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "articles", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "category"
+    t.boolean  "frontpage",  :default => true
+    t.boolean  "visible",    :default => true
+  end
+
+  add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
+
+  create_table "categories", :force => true do |t|
+    t.string "category"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "first"
     t.string   "last"
@@ -65,7 +82,6 @@ ActiveRecord::Schema.define(:version => 20120131025710) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "permalink"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

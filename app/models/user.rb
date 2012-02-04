@@ -2,11 +2,13 @@ require 'digest'
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-    #before_save :create_permalink
-    
-    devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-    validates_uniqueness_of :permalink
+  devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+    attr_accessible :email, :password, :password_confirmation, :remember_me, :first, :last, :address1, :postcode, :phone_number, :prov
+
+    has_many :articles
     
     #Postal Code regex - "A1A 2B2"
     postco_regex = /[A-Z]+[0-9]+[A-Z]+\s+[0-9]+[A-Z]+[0-9]/
@@ -21,16 +23,6 @@ class User < ActiveRecord::Base
     validates :phone_number, :presence => true, :format => { :with => phone_regex }
     validates :prov, :presence => true
     
-    #def to_param
-    #    permalink
-    #end
-
-    private
-    def create_permalink
-        self.permalink = first.downcase
-    end
-    
-
 end
 
 

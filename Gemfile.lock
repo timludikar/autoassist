@@ -130,6 +130,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin
   annotate
+  devise
   mail
   rails (= 3.0.1)
   rspec-rails (= 2.7.0)

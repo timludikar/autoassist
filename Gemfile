@@ -4,6 +4,7 @@ gem 'rails', '3.0.1'
 gem 'mail'
 #gem 'authlogic'
 gem 'activeadmin'
+gem 'devise'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
