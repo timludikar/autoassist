@@ -1,0 +1,15 @@
+<h1>News</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+  </tr>
+
+<% @articles.each do |article| %>
+  <tr>
+    <td><%= link_to (article.name), article %></td>
+    <td><%= article.content %></td>
+  </tr>
+<% end %>
+</table>

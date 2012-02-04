@@ -1,0 +1,73 @@
+have_library: checking for fdatasync() in -lrt... -------------------- no
+
+"gcc -o conftest -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin11.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64      -lruby -lrt  -lpthread -ldl  "
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘fdatasync’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘fdatasync’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+lipo: can't figure out the architecture type of: /var/folders/88/jnr14c0n0gv1x8t53rlhxprh0000gn/T//ccFIhNa0.out
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))fdatasync; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin11.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64      -lruby -lrt  -lpthread -ldl  "
+ld: library not found for -lrt
+collect2: ld returned 1 exit status
+ld: library not found for -lrt
+collect2: ld returned 1 exit status
+lipo: can't open input file: /var/folders/88/jnr14c0n0gv1x8t53rlhxprh0000gn/T//cc5xepDG.out (No such file or directory)
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { fdatasync(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for sqlite3.h... -------------------- yes
+
+"gcc -E -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin11.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE     -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common    conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include <sqlite3.h>
+/* end */
+
+--------------------
+
+have_library: checking for sqlite3_open() in -lsqlite3... -------------------- yes
+
+"gcc -o conftest -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin11.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64      -lruby -lsqlite3  -lpthread -ldl  "
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘sqlite3_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+conftest.c: In function ‘t’:
+conftest.c:3: error: ‘sqlite3_open’ undeclared (first use in this function)
+conftest.c:3: error: (Each undeclared identifier is reported only once
+conftest.c:3: error: for each function it appears in.)
+lipo: can't figure out the architecture type of: /var/folders/88/jnr14c0n0gv1x8t53rlhxprh0000gn/T//ccAAxte5.out
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { void ((*volatile p)()); p = (void ((*)()))sqlite3_open; return 0; }
+/* end */
+
+"gcc -o conftest -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin11.0 -I.  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   conftest.c  -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64      -lruby -lsqlite3  -lpthread -ldl  "
+checked program was:
+/* begin */
+1: /*top*/
+2: int main() { return 0; }
+3: int t() { sqlite3_open(); return 0; }
+/* end */
+
+--------------------
+
