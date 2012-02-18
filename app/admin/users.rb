@@ -24,6 +24,7 @@ ActiveAdmin.register User do
             f.input :postcode
             f.input :prov
             f.input :phone_number
+            f.input :role
         end
         f.buttons
     end
@@ -39,6 +40,7 @@ ActiveAdmin.register User do
                 row("Postal code") { user.postcode }
                 row("Province") { user.prov }
                 row("Phone number") { user.phone_number }
+                row("Role") { user.role }
             end
         end
         

@@ -23,6 +23,9 @@ class User < ActiveRecord::Base
     validates :phone_number, :presence => true, :format => { :with => phone_regex }
     validates :prov, :presence => true
     
+    def role?(role)
+        role.include? role.to_s
+    end
 end
 
 
