@@ -3,6 +3,13 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
@@ -22,6 +29,10 @@ class User < ActiveRecord::Base
     validates :postcode, :presence => true, :format => { :with => postco_regex }
     validates :phone_number, :presence => true, :format => { :with => phone_regex }
     validates :prov, :presence => true
+    
+    def role?(role)
+        role.include? role.to_s
+    end
     
 end
 

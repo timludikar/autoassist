@@ -1,12 +1,20 @@
 Autoassist::Application.routes.draw do
 
 
-  devise_for :users do
+  devise_for :users
+
+    #devise_scope :users do
 
     #devise_for :users do
-      get "/login", :to => "devise/sessions#new"
-      get "/signup", :to => "devise/registrations#new"
-      delete "/logout" => "devise/sessions#destroy"
+    #  match '/login' => "devise/sessions#new"
+    #  match '/signup' => "devise/registrations#new"
+    #  get "logout", :to => "devise/sessions#destroy"
+    #end
+    
+    devise_scope :user do
+        get "signup", :to => "devise/registrations#new"
+        get "login", :to => "devise/sessions#new"
+        get "logout", :to => "devise/sessions#destroy"
     end
 
   ActiveAdmin.routes(self)

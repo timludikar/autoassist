@@ -1,7 +1,9 @@
 class ArticlesController < InheritedResources::Base
+    
+    load_and_authorize_resource
+    
     def index
         @title = "News"
-        @articles = Article.find(:all)
     end
     
     def create
