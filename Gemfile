@@ -1,16 +1,42 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.1'
+gem 'rails', '3.1'
 gem 'mail'
-#gem 'authlogic'
+
+#ActiveAdmin Install
 gem 'activeadmin'
+
+gem "meta_search",    '>= 1.1.0.pre'
+
+#Authorization and Authenication
 gem 'devise'
 gem 'cancan'
+<<<<<<< HEAD
+=======
+
+#Rails 3.1 Asset Pipeline
+group :assets do
+	gem 'sass-rails', " ~> 3.1.0"
+	gem 'coffee-rails', " ~> 3.1.0"
+	gem 'uglifier'
+end
+
+gem 'jquery-rails'
+
+#gem 'json'
+#gem 'sass'
+#gem 'coffee-script'
+
+#gem 'coffeebeans'
+#gem 'sprockets', '= 2.0.0'
+
+>>>>>>> Rails3.1Update
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
+gem 'sqlite3-ruby', '1.3.3'
+gem 'sqlite3', '1.3.4'
 
 # Use unicorn as the web server
 # gem 'unicorn'
