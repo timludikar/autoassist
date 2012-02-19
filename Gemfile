@@ -11,11 +11,6 @@ gem "meta_search",    '>= 1.1.0.pre'
 #Authorization and Authenication
 gem 'devise'
 gem 'cancan'
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> Rails3.1Update
 
 #Rails 3.1 Asset Pipeline
 group :assets do
@@ -33,10 +28,6 @@ gem 'jquery-rails'
 #gem 'coffeebeans'
 #gem 'sprockets', '= 2.0.0'
 
-<<<<<<< HEAD
->>>>>>> Rails3.1Update
-=======
->>>>>>> Rails3.1Update
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

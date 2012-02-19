@@ -11,15 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20120217020338) do
-=======
 ActiveRecord::Schema.define(:version => 20120218155415) do
->>>>>>> Rails3.1Update
-=======
-ActiveRecord::Schema.define(:version => 20120218155415) do
->>>>>>> Rails3.1Update
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false

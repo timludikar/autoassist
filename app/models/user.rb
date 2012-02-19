@@ -33,14 +33,7 @@ class User < ActiveRecord::Base
     def role?(role)
         role.include? role.to_s
     end
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     
->>>>>>> Rails3.1Update
-=======
-    
->>>>>>> Rails3.1Update
 end
 
 
