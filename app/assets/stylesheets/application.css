@@ -1,6 +1,5 @@
 /*
 *= require_self
-*= require_tree .
 */
 
 body { background-color: #fff; color: #333; }
@@ -58,4 +57,32 @@ div.field, div.actions {
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
+}
+
+
+html, body {
+    height: 10%;
+}
+
+div.container {
+    min-height: 100%;
+}
+
+article[role=main]  {
+    overflow:auto;
+    padding-bottom: 100px; /* Padding must have the same value as footer margin&height */
+}  
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0; right: 0;
+    margin: 0 auto 0 auto !important;
+    z-index: 100;
+    width: 100%;
+    color:white;
+    background-color:black;
+    z-index: 100;
+    clear:both;
+    text-align: center;    
 }

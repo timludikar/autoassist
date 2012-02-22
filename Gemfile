@@ -21,13 +21,8 @@ end
 
 gem 'jquery-rails'
 
-#gem 'json'
-#gem 'sass'
-#gem 'coffee-script'
-
-#gem 'coffeebeans'
-#gem 'sprockets', '= 2.0.0'
-
+#Mercury Editor
+gem 'mercury-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

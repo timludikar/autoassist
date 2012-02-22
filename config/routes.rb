@@ -1,6 +1,8 @@
 Autoassist::Application.routes.draw do
 
 
+  Mercury::Engine.routes
+
   devise_for :users
 
     #devise_scope :users do
@@ -22,7 +24,11 @@ Autoassist::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
     
     #resources :users #do
-    resources :articles
+    resources :articles do
+        member { post :mercury_update }
+    end
+    
+    post "/articles/:id", :to => "articles#mercury_update"
         #end
     
     #match 'articles' => 'articles#index', :as => :articles, :via => :get

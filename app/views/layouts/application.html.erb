@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="no">
 <head>
-  <title><%= title %></title>
+	<title><%= title %></title>
 	<%= stylesheet_link_tag "application" %>
 	<%= javascript_include_tag "application" %>
-  <%= csrf_meta_tag %>
+	<%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= render 'layouts/header' %>
-
-<%= yield %>
-
+	<%= render 'layouts/header' %>
+	<div class="container">
+		<article role="main">
+			<%= yield %>
+		</article>
+	</div>
+	<%= render 'layouts/footer' %>
 </body>
 </html>

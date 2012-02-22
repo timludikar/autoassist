@@ -2,12 +2,16 @@
 
 <p>
   <b>Title:</b>
-  <%= @article.name %>
+  <div id="article_title" class="mercury-region" data-type="editable">
+  <%= raw @article.name %>
+  </div>
 </p>
 
 <p>
   <b>Content:</b>
-  <%= @article.content %>
+  <div id="article_content" class="mercury-region" data-type="editable">
+  	<%= raw @article.content %>
+	</div>
 </p>
 
 <p>
@@ -15,5 +19,5 @@
   <%= @article.category %>
 </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to "Edit", "/editor" + request.path, :id => "edit_link", :data => {:save_url => mercury_update_article_path(@article)} %>
 <%= link_to 'Back', articles_path %>

@@ -1,0 +1,5 @@
+<% if can? :update, @article %>
+	<footer>
+		<%= link_to 'New Article', new_article_path %>
+	</footer>
+<% end %>

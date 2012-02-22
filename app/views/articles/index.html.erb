@@ -15,11 +15,10 @@
 
 <% @articles.each do |article| %>
   <tr>
-    <td><%= article.name %></td>
-    <td><%= article.content %></td>
+    <td><%= link_to (raw article.name), article %></td>
+    <td><%= raw article.content %></td>
 	<td><%= check_box_tag article.frontpage, article.frontpage, if article.frontpage == true then true end, :disabled => true %></td>
 	<td><%= check_box_tag article.visible, article.visible, if article.visible == true then true end, :disabled => true %></td>
-    <td><%= link_to 'Show', article %></td>
 	<% if can? :update, @article %>
     	<td><%= link_to 'Edit', edit_article_path(article) %></td>
     	<td><%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -29,5 +28,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New Article', new_article_path %>
