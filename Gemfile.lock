@@ -41,6 +41,8 @@ GEM
       activesupport (= 3.1.0)
     activesupport (3.1.0)
       multi_json (~> 1.0)
+    ancestry (1.2.4)
+      activerecord (>= 2.2.2)
     annotate (2.4.0)
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
@@ -182,6 +184,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  ancestry
   annotate
   cancan
   coffee-rails (~> 3.1.0)

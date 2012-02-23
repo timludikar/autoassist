@@ -21,6 +21,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'ancestry'
+
 #Mercury Editor
 gem 'mercury-rails'
 

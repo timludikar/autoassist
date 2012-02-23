@@ -1,6 +1,8 @@
 Autoassist::Application.routes.draw do
 
 
+  resources :pages
+
   Mercury::Engine.routes
 
   devise_for :users
