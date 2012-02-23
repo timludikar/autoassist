@@ -70,6 +70,7 @@ GEM
     fastercsv (1.5.4)
     formtastic (2.0.2)
       rails (~> 3.0)
+    friendly_id (4.0.0)
     has_scope (0.5.1)
     hike (1.2.1)
     i18n (0.6.0)
@@ -189,6 +190,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 3.1.0)
   devise
+  friendly_id
   jquery-rails
   mail
   mercury-rails

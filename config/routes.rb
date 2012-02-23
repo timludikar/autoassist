@@ -40,6 +40,12 @@ Autoassist::Application.routes.draw do
     #resources :users, :only => ["show", "edit", "update"], :as => :profile, :path => 'profile/'
     # match '/:id' => 'users#show', :as => :p, path => '$/'
     
+    match '/new' => 'pages#new', :as => :new_page, :via => :get
+    match '/:id/edit' => 'pages#edit', :as => :edit_page, :via => :get
+    match '/:id' => 'pages#show', :as => :page, :via => :get
+    match '/:id' => 'pages#update', :via => :put
+    match '/:id' => 'pages#destroy', :via => :delete
+    
     match 'myaccount/' => 'users#show', :as => :profile, :via => :get
     match 'myaccount/update' => 'users#edit', :as => :edit_profile, :via => :put
     #resource :user, :as => 'account'

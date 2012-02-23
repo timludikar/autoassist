@@ -22,6 +22,7 @@ end
 gem 'jquery-rails'
 
 gem 'ancestry'
+gem 'friendly_id'
 
 #Mercury Editor
 gem 'mercury-rails'

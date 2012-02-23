@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120222023919) do
+ActiveRecord::Schema.define(:version => 20120223021336) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -77,9 +77,11 @@ ActiveRecord::Schema.define(:version => 20120222023919) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"
+    t.string   "slug"
   end
 
   add_index "pages", ["ancestry"], :name => "index_pages_on_ancestry"
+  add_index "pages", ["slug"], :name => "index_pages_on_slug"
 
   create_table "users", :force => true do |t|
     t.string   "first"
