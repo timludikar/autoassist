@@ -4,6 +4,7 @@ class ArticlesController < InheritedResources::Base
     
     def index
         @title = "News"
+        @article = Article.find(:all, :conditions => {:category => params[:category]})
     end
     
     def create
@@ -19,4 +20,14 @@ class ArticlesController < InheritedResources::Base
         article.save!
         render :text => ""
     end
+    
+    def show
+      if params[:category].nil?
+        @article = Article.find(params[:id])
+      else
+        @article = Article.find(params[:id], :conditions => {:category => params[:category]})
+      end
+      @title = @article.category.capitalize
+    end
+
 end

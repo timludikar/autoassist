@@ -1,6 +1,5 @@
 Autoassist::Application.routes.draw do
-
-
+  
   resources :pages
 
   Mercury::Engine.routes
@@ -15,6 +14,9 @@ Autoassist::Application.routes.draw do
     #  get "logout", :to => "devise/sessions#destroy"
     #end
     
+    match '/myaccount/' => 'users#show', :as => :profile, :via => :get
+    match '/myaccount/update' => 'users#edit', :as => :edit_profile, :via => :put
+    
     devise_scope :user do
         get "signup", :to => "devise/registrations#new"
         get "login", :to => "devise/sessions#new"
@@ -26,8 +28,13 @@ Autoassist::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
     
     #resources :users #do
+    
     resources :articles do
         member { post :mercury_update }
+    end
+    
+    scope :articles do
+      match ':category/:id' => "articles#show", :as => :category, :via => [:get, :put]
     end
     
     post "/articles/:id", :to => "articles#mercury_update"
@@ -46,8 +53,8 @@ Autoassist::Application.routes.draw do
     match '/:id' => 'pages#update', :via => :put
     match '/:id' => 'pages#destroy', :via => :delete
     
-    match 'myaccount/' => 'users#show', :as => :profile, :via => :get
-    match 'myaccount/update' => 'users#edit', :as => :edit_profile, :via => :put
+    
+    
     #resource :user, :as => 'account'
     #resources :sessions, :only => [:new, :create, :destroy]
 

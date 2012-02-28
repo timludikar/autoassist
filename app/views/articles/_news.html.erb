@@ -8,7 +8,7 @@
 
 <% @articles.each do |article| %>
   <tr>
-    <td><%= link_to (raw article.name), article %></td>
+    <td><%= link_to (raw article.name), category_path(article.category, article.id) %></td>
     <td><%= article.content %></td>
   </tr>
 <% end %>
