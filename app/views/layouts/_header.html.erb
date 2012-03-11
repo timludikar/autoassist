@@ -1,21 +1,30 @@
 <header>
-	<nav class ="round">
-		<ul>
+	<%= image_tag "header_logo.png" %>
+	<section>
+		<% if user_signed_in? %>
+			<li><%= link_to "My Account", profile_path %></li>
+			<li><%= link_to "Sign Out", logout_path, :method => :delete %></li>
+		<% else %>
+			<li><%= link_to "Sign Up", signup_path %></li>
+			<li><%= link_to "Sign In", login_path %></li>
+		<% end %>
+	</section>
+	<nav>
+		<ul id="navbar">
 			<li><%= link_to "Home", root_path %></li>
-  			<% if user_signed_in? %>
-    			<li><%= link_to "Sign Out", logout_path, :method => :delete %></li>
-				<li><%= link_to "My Account", profile_path %></li>
-  			<% else %>
-    			<li><%= link_to "Sign Up", signup_path %></li>
-				<li><%= link_to "Sign In", login_path %></li>
-  			<% end %>
 			<li><%= link_to "News", articles_path %></li>
-  				<% for page in Page.roots %>
-    				<li><%= link_to h(page.title), page %></li>
+			<% Page.roots.each do |page, index| %>
+				<li><%= link_to h(page.title), page %>
+				<% if page.has_children? %>
+					<ul class='submenu'>
 					<% for child in page.children %>
-    						<li><%= link_to h(child.title), child %></li>
-  					<% end %>
-  				<% end %>
+						<li><%= link_to h(child.title), child %></li>
+					<% end %>
+					</ul>
+				<% end %>
+				</li>
+			<% end %>
 		</ul>
 	</nav>
 </header>
+

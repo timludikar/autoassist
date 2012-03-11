@@ -5,14 +5,78 @@
 	<%= stylesheet_link_tag "application" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tag %>
+	
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		$mainmenu = $('ul#navbar');
+		$submenu = $('ul#navbar li:has("ul")');
+
+		//Find the length of the navbar
+		var menuItems = ($("ul#navbar a").length - $("ul#navbar li ul a").length);
+
+		//Find the number of elements in the main menu
+		var totalwidth = 0;
+
+		//Calculate the total width of each element
+		$('ul#navbar li').each(function(){
+			totalwidth += $(this).width();					
+		});
+
+
+		//Calculate the required padding
+		var requiredPadding = Math.floor(($mainmenu.width() - totalwidth)/(menuItems) / 2);
+
+		var roundingErrorFix = $mainmenu.width()-((requiredPadding*menuItems*2)+totalwidth);
+
+		$('ul#navbar li a').each(function(i) {
+	    if(i==0) {
+	        $(this).css('padding-left',requiredPadding+roundingErrorFix/2+'px')
+	            .css('padding-right',requiredPadding+roundingErrorFix/2+'px');
+	    }
+	    else {
+	        $(this).css('padding-left',requiredPadding+'px')
+	            .css('padding-right',requiredPadding+'px');
+	    	}
+		});
+
+		$submenu.each(function(){
+			// Find difference between main menu and sub menu width
+			// Add difference to submenu width
+			$(this).find('.submenu').css('width',$(this).outerWidth(true)+'px');
+		});
+		
+		$('.submenu').textfill({ maxFontPixels: 16 });
+	});
+	
+	
+	;(function($) {
+	    $.fn.textfill = function(options) {
+	        var fontSize = options.maxFontPixels;
+	        var ourText = $('span:visible:first', this);
+	        var maxHeight = $(this).height();
+	        var maxWidth = $(this).width();
+	        var textHeight;
+	        var textWidth;
+	        do {
+	            ourText.css('font-size', fontSize);
+	            textHeight = ourText.height();
+	            textWidth = ourText.width();
+	            fontSize = fontSize - 1;
+	        } while ((textHeight > maxHeight || textWidth > maxWidth) && fontSize > 3);
+	        return this;
+	    }
+	})(jQuery);
+	</script>
+
 </head>
 <body>
 	<%= render 'layouts/header' %>
-	<div class="container">
-		<article role="main">
+		<section>
 			<%= yield %>
-		</article>
-	</div>
+		</section>
 	<%= render 'layouts/footer' %>
 </body>
 </html>
