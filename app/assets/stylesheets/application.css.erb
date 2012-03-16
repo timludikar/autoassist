@@ -139,21 +139,53 @@ ul#navbar li a:hover {
 	border-right: none;
 }
 
-section#slideshow {
-	position:absolute;
-	width:896px;
-	height:400px;
-	border: 2px solid #d5d5d5;
-	z-index:0;
+#feature {
+	position: relative;	
+	z-index: 0;
 	margin-top: 10px;
+	width:895px;
+	padding:0px;
+	height:596px;
 	
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	background-color: #FFF;
+	border: 2px solid #d5d5d5;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 	
-	-moz-box-shadow: 1px 1px 0px #d5d5d5;
-	-webkit-box-shadow: 1px 1px 0px #d5d5d5;
-	box-shadow: 1px 1px 0px #d5d5d5;
+	box-shadow: 1px 1px #d5d5d5;
+	-moz-box-shadow: 1px 1px #d5d5d5;
+	-webkit-box-shadow: 1px 1px #d5d5d5;
 }
+
+#feature img {
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+}
+
+
+#feature-nav{
+	position: relative;
+	top: -15px;
+	right: -5px;
+	z-index: 1000;
+}
+
+#feature-nav a{
+	display: block; 
+	width: 10px; 
+	height: 10px;
+	float: left; 
+	margin: 0 4px;
+	background-color: #fff; 
+	text-indent: -9999px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+
+#feature-nav a:hover, #feature-nav a.activeSlide {
+	background-color: #a1c2e6;
+}
+
 
