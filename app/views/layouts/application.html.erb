@@ -10,8 +10,8 @@
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript" src="http://malsup.github.com/chili-1.7.pack.js"></script>
 	<script type="text/javascript" src="http://malsup.github.com/jquery.cycle.all.js"></script>
-	<script type="text/javascript" src="http://malsup.github.com/jquery.cycle.all.js"></script>
 	<script type="text/javascript" src="http://malsup.github.com/jquery.easing.1.3.js"></script>
+	<%= javascript_include_tag "jcarousellite_1.0.1" %>
 	<script type="text/javascript">
 
 	$(document).ready(function(){
@@ -65,15 +65,13 @@
 			before: function() { if (window.console) console.log(this.src); }
 	    });
 
-
 	    $("#feature-nav a").click(function(){
 	        $("#feature-nav a").removeClass("activeSlide");
 	        $(this).addClass("activeSlide");
 
 	    });
-
 	});
-	</script>
+</script>
 
 </head>
 <body>

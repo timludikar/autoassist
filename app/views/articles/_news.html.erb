@@ -1,15 +1,22 @@
-<h1>News</h1>
+<section id='slideshow'>
+	<ul>
+		<% @articles.each do |article| %>
+		<article>
+    		<header><h1><%= raw article.name.upcase %></h1></header>
+            <%= image_tag "feature/Fiat-500-US-Spec-02.jpg", :width => "302", :height => "240" %>
+    		<p><%= article.content %> <%= link_to ("Read More"), category_path(article.category, article.id) %><p>
+    	</article>
+		<% end %>
+	</ul>
+    <nav>
+    	<a href="#" class="prev"><%= image_tag "slideshow/article_arrow.png", :width => "24", :height => "25" %></a>
+    	<a href="#" class="next"><%= image_tag "slideshow/article_arrow.png", :width => "24", :height => "25" %></a>
+    </nav>
+</section>
+<script type="text/javascript">
+    $("#slideshow").jCarouselLite({
+        btnNext: ".next",
+        btnPrev: ".prev"
+    });   
+</script>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Content</th>
-  </tr>
-
-<% @articles.each do |article| %>
-  <tr>
-    <td><%= link_to (raw article.name), category_path(article.category, article.id) %></td>
-    <td><%= article.content %></td>
-  </tr>
-<% end %>
-</table>
