@@ -193,7 +193,7 @@ ul#navbar li a:hover {
 	margin-top: 10px;
 	overflow-x: scroll; overflow-y: hidden;
 	width: 990px;
-	height: auto;
+	height: 400px;
 }
 
 #slideshow article {
@@ -254,8 +254,9 @@ ul#navbar li a:hover {
 }
 
 #slideshow nav {
-	position: absolute;
-	top: 50%;
+	position: relative;
+	top: -208px;
+	width: 995px;
 	z-index: 1000;
 }
 
@@ -276,14 +277,19 @@ ul#navbar li a:hover {
 	margin-top: 11px;
 }
 
+#slideshow nav a img {
+	margin-left: 11px;
+	margin-top: 11px;
+}
+
 #slideshow .prev {
 	float: left;
 	margin-left: 2px;
-	margin-right: 897px;
 }
 
 #slideshow .next {
 	float: right;
+	margin-right: 2px;
 }
 
 #slideshow .next img {
@@ -293,6 +299,53 @@ ul#navbar li a:hover {
     transform: scaleX(-1);
     filter: FlipH;
 	-ms-filter: "FlipH";
+}
+
+footer {
+	position: relative;
+	width: 997px;
+	height: auto;
+	color: #FFF;
+	
+	background-color: #222222;
+	
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	
+	margin-top: 10px;
+	margin-bottom: 10px;
+	
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+footer nav {
+	padding-top: 20px;	
+}
+
+footer nav ul {
+	list-style: none;
+	text-align: center;
+}
+
+footer nav ul li {
+	display: inline;
+}
+
+footer nav ul li a:link, footer nav ul li a:visited {
+	color: #FFF;
+	font-size: 14px;
+	text-decoration: none;
+}
+
+footer p {
+	text-align: center;
+	line-height: 30px;
+	font-size: 14px;
+}
+
+footer small {
+	font-size: 10px;
 }
 
 

@@ -1,6 +1,22 @@
-<% if can? :update, @article %>
-	<footer>
-		<%= link_to 'New Article', new_article_path %>
-		<%= link_to 'New Page', new_page_path %>
-	</footer>
-<% end %>
+<footer>
+	<nav>
+		<ul>
+			<li><%= link_to "Home", root_path %> | </li>
+			<li><%= link_to "News", articles_path %> | </li>
+			<% Page.roots.each do |page, index| %>
+				<% if Page.roots.last == page or Page.roots.first == page then %>
+					<li><%= link_to h(page.title), page %></li>
+				<% else %>
+					<li><%= link_to h(page.title), page %> | </li>
+				<% end %>
+			<% end %>
+		</ul>
+    </nav>
+    <section>
+	<% if can? :update, @article %>
+		<p><%= link_to 'New Article', new_article_path %> | <%= link_to 'New Page', new_page_path %></p>
+	<% end %>
+    <p>For business inquiries please email inquiries@autoassistant.com</p>
+    <p><small>2012 © Auto Assistant</small></p>
+</footer>
+
