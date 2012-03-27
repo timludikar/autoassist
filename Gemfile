@@ -20,6 +20,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'mini_magick'
 
 gem 'ancestry'
 gem 'friendly_id'

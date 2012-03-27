@@ -1,3 +1,16 @@
+<script>
+function remove_fields(link) {
+  $(link).prev("input[type=hidden]").val("1");
+  $(link).closest(".fields").hide();
+}
+
+function add_fields(link, association, content) {
+  var new_id = new Date().getTime();
+  var regexp = new RegExp("new_" + association, "g")
+  $(link).parent().before(content.replace(regexp, new_id));
+}
+</script>
+
 <%= form_for(@article) do |f| %>
 	<% if @article.errors.any? %>
 		<div id="error_explanation">
@@ -34,7 +47,14 @@
 		<%= f.label "Visible?" %>
 		<%= f.check_box :visible %>
 	</div>
-
+	
+	<p><%= link_to_add_fields "Add Image", f, :images %></p>
+	<% for image in @article.images %>
+	<div class="fields">
+		<%= link_to image_tag (image.photo.url(:thumbnail)), edit_image_path(image), :popup => ['new_window_name', 'height=300,width=600'] %>
+	</div>
+	<% end %>
+	
 	<div class="actions">
 	<%= f.submit %>
 	</div>

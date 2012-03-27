@@ -26,6 +26,8 @@ Autoassist::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
+  
+  resources :images
     
     #resources :users #do
     
@@ -42,6 +44,8 @@ Autoassist::Application.routes.draw do
     
     #match 'articles' => 'articles#index', :as => :articles, :via => :get
     #match 'articles' => 'articles#new', :as => :new_articles, :via => :post
+
+    
 
     #resources :user_sessions
     #resources :users, :only => ["show", "edit", "update"], :as => :profile, :path => 'profile/'

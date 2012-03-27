@@ -19,5 +19,12 @@
   <%= @article.category %>
 </p>
 
+
+<% for image in @article.images %>
+	<div id='cropwrap'>
+  		<%= image_tag image.photo.url, :id => 'cropimage' %>	
+	</div>
+<% end %>
+
 <%= link_to "Edit", "/editor" + request.path, :id => "edit_link", :data => {:save_url => mercury_update_article_path(@article)} %>
 <%= link_to 'Back', articles_path %>

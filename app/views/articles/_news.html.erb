@@ -3,7 +3,9 @@
 		<% @articles.each do |article| %>
 		<article>
     		<header><h1><%= raw article.name.upcase %></h1></header>
-            <%= image_tag "feature/Fiat-500-US-Spec-02.jpg", :width => "302", :height => "240" %>
+			<% for image in article.images %>
+            	<%= image_tag image.photo.url(:thumbnail), :width => "302", :height => "240" %>
+			<% end %>
     		<p><%= article.content %> <%= link_to ("Read More"), category_path(article.category, article.id) %><p>
     	</article>
 		<% end %>

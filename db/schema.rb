@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120223021336) do
+ActiveRecord::Schema.define(:version => 20120324033844) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(:version => 20120223021336) do
 
   create_table "categories", :force => true do |t|
     t.string "category"
+  end
+
+  create_table "images", :force => true do |t|
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   create_table "mercury_images", :force => true do |t|
