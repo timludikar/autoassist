@@ -19,6 +19,9 @@
   <%= @article.category %>
 </p>
 
+<p>Thumbnail!</p>
+<%= image_tag @article.thumbnail %>
+
 
 <% for image in @article.images %>
 	<div id='cropwrap'>

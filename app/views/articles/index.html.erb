@@ -7,7 +7,7 @@
     <th>Frontpage?</th>
     <th>Visible?</th>
 	<th></th>
-	<% if can? :update, @article %>
+	<% if can? :update, @articles %>
     	<th></th>
 		<th></th>
 	<% end %>
@@ -19,7 +19,7 @@
     <td><%= raw article.content %></td>
 	<td><%= check_box_tag article.frontpage, article.frontpage, if article.frontpage == true then true end, :disabled => true %></td>
 	<td><%= check_box_tag article.visible, article.visible, if article.visible == true then true end, :disabled => true %></td>
-	<% if can? :update, @article %>
+	<% if can? :update, @articles %>
     	<td><%= link_to 'Edit', edit_article_path(article) %></td>
     	<td><%= link_to 'Destroy', article, :confirm => 'Are you sure?', :method => :delete %></td>
 	<% end %>

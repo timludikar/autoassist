@@ -28,7 +28,6 @@ Autoassist::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   
   resources :images
-    
     #resources :users #do
     
     resources :articles do

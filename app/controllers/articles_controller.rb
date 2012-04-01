@@ -23,11 +23,11 @@ class ArticlesController < InheritedResources::Base
     
     def show
       if params[:category].nil?
-        @article = Article.find(params[:id])
+        @articles = Article.find(params[:id])
       else
-        @article = Article.find(params[:id], :conditions => {:category => params[:category]})
+        @articles = Article.find(params[:id], :conditions => {:category => params[:category]})
       end
-      @title = @article.category.capitalize
+      @title = @articles.category.capitalize
     end
 
 end

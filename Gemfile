@@ -21,12 +21,13 @@ end
 
 gem 'jquery-rails'
 gem 'mini_magick'
+gem 'acts_as_list'
 
 gem 'ancestry'
 gem 'friendly_id'
 
 #Mercury Editor
-gem 'mercury-rails'
+#gem 'mercury-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

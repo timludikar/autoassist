@@ -1,4 +1,27 @@
 <script>
+$( init );
+
+function init() {
+	$(".draggable").draggable({
+		helper: "clone"
+	});
+	
+	$("#thumbnail").droppable({
+        drop: function( event, ui ) {
+            deleteImage( ui.draggable );
+        }
+	});
+}
+
+function deleteImage ($item) {	
+    var $list = $( "ul", "#thumbnail" ).length ? $( "ul", "#thumbnail" ) : $( "<ul class='gallery ui-helper-reset'/>" ).appendTo( "#thumbnail" );
+
+	$list.empty();
+	$item.clone().appendTo($list).fadeIn();
+	
+	jQuery('#article_thumbnail_id').val($item.find("a").attr("id"));
+}
+
 function remove_fields(link) {
   $(link).prev("input[type=hidden]").val("1");
   $(link).closest(".fields").hide();
@@ -10,6 +33,10 @@ function add_fields(link, association, content) {
   $(link).parent().before(content.replace(regexp, new_id));
 }
 </script>
+
+<style>
+.draggable, #thumbnail { list-style-type: none; margin: 10px; padding: 0; margin-right: 10px; background: #eee; padding: 5px; width: auto; height: 100px}
+</style>
 
 <%= form_for(@article) do |f| %>
 	<% if @article.errors.any? %>
@@ -49,14 +76,25 @@ function add_fields(link, association, content) {
 	</div>
 	
 	<p><%= link_to_add_fields "Add Image", f, :images %></p>
+	<ul>
 	<% for image in @article.images %>
-	<div class="fields">
-		<%= link_to image_tag (image.photo.url(:thumbnail)), edit_image_path(image), :popup => ['new_window_name', 'height=300,width=600'] %>
-	</div>
+		<li class="draggable">
+			<%= link_to image_tag (image.photo.url(:thumbnail)), edit_image_path(image), :id => image.id %>
+		</li>
 	<% end %>
+	</ul>
+	
+	<div class="field" id='thumbnail'>
+	<ul>
+		<li><%= image_tag (@article.thumbnail) %></li>
+	</ul>
+	</div>
+	<%= f.hidden_field :thumbnail_id %>
 	
 	<div class="actions">
-	<%= f.submit %>
+		<%= f.submit %>
 	</div>
+	
+
 <% end %>
 

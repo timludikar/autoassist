@@ -1,11 +1,9 @@
 class ImagesController < ApplicationController
   def edit
-    @images = Image.find(params[:id])
-    session[:return_to] ||= request.referer
+    @images = Image.find(params[:id], :order => 'position')
   end
   
   def update
-    
     @images = Image.find(params[:id])
     crop_params = "#{params[:w]}x#{params[:h]}+#{params[:x]}+#{params[:y]}"    
         
@@ -13,6 +11,6 @@ class ImagesController < ApplicationController
     image.crop(crop_params)
     image.write(@images.photo.path(:thumbnail))
     
-    redirect_to session[:return_to]
+    redirect_to edit_article_path(@images.article_id)
   end
 end

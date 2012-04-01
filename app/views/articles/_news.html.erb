@@ -1,13 +1,11 @@
 <section id='slideshow'>
 	<ul>
 		<% @articles.each do |article| %>
-		<article>
-    		<header><h1><%= raw article.name.upcase %></h1></header>
-			<% for image in article.images %>
-            	<%= image_tag image.photo.url(:thumbnail), :width => "302", :height => "240" %>
-			<% end %>
-    		<p><%= article.content %> <%= link_to ("Read More"), category_path(article.category, article.id) %><p>
-    	</article>
+			<article>
+    			<header><h1><%= raw article.name.upcase %></h1></header>
+            	<%= image_tag article.thumbnail, :width => "302", :height => "240" %>
+    			<p><%= article.content %> <%= link_to ("Read More"), category_path(article.category, article.id) %><p>
+    		</article>
 		<% end %>
 	</ul>
     <nav>
