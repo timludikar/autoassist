@@ -2,6 +2,13 @@ class ArticlesController < InheritedResources::Base
     
     load_and_authorize_resource
     
+    def new
+      @article = Article.new
+      1.times do
+        image = @article.images.build
+      end
+    end
+    
     def index
         @title = "News"
         @article = Article.find(:all, :conditions => {:category => params[:category]})
@@ -29,5 +36,10 @@ class ArticlesController < InheritedResources::Base
       end
       @title = @articles.category.capitalize
     end
-
+    
+    def edit
+      1.times do
+        image = @article.images.build
+      end  
+    end
 end

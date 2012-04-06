@@ -27,7 +27,7 @@ gem 'ancestry'
 gem 'friendly_id'
 
 #Mercury Editor
-#gem 'mercury-rails'
+gem 'mercury-rails'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

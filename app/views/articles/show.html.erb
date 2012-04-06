@@ -25,7 +25,7 @@
 
 <% for image in @article.images %>
 	<div id='cropwrap'>
-  		<%= image_tag image.photo.url, :id => 'cropimage' %>	
+  		<%= image_tag image.photo.url(:medium), :id => 'cropimage' %>	
 	</div>
 <% end %>
 

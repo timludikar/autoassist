@@ -1,5 +1,7 @@
 Autoassist::Application.routes.draw do
   
+  resources :images
+
   resources :pages
 
   Mercury::Engine.routes
@@ -27,10 +29,13 @@ Autoassist::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   
-  resources :images
+  
     #resources :users #do
     
     resources :articles do
+      resources :images do
+        match '/thumbnail' => 'images#thumbnail', :via => :get, :as => :thumbnail
+      end
         member { post :mercury_update }
     end
     

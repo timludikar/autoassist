@@ -1,0 +1,73 @@
+<%= javascript_include_tag "jquery.Jcrop" %>
+<%= stylesheet_link_tag "jquery.jcrop" %>
+<script type="text/javascript" language="JavaScript">
+jQuery(function() {
+	$('#target').Jcrop({
+   		aspectRatio : 1.25,
+		onSelect : updateCoords
+	});
+});
+
+function updateCoords(c)
+{
+    jQuery('#x').val(c.x);
+    jQuery('#y').val(c.y);
+    jQuery('#w').val(c.w);
+    jQuery('#h').val(c.h);
+};
+
+function updatePreview() {
+    if(parseInt(jQuery("#w").val()) > 0) {
+        // Show image preview
+        var imageObj = $("#target")[0];
+        var canvas = $("#preview")[0];
+        var context = canvas.getContext("2d");
+        context.drawImage(imageObj, jQuery('#x').val(), jQuery('#y').val(), jQuery('#w').val(), jQuery('#h').val(), 0, 0, canvas.width, canvas.height);
+    }
+	else {
+		alert('Please select a crop region then press submit.');
+	}
+};
+
+$(document).ready(function() {
+    $('#preview_btn').click(function() {
+        updatePreview();
+    });
+});
+
+
+</script>
+
+<h1>Editing Images</h1>
+ 
+<!-- CROP FORM -->
+<%= form_for(@image) do |f| %>
+	<% if @image.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+			<ul>
+				<% @image.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<input type="hidden" id="x" name="x" />
+	<input type="hidden" id="y" name="y" />
+	<input type="hidden" id="w" name="w" />
+	<input type="hidden" id="h" name="h" />
+	
+	<div>
+		<%= image_tag @image.photo.url(:original), :id => "target" %>
+	</div>
+	<div>
+		<canvas id="preview" style="width:304px;height:240px;overflow:hidden;">
+	</div>
+	
+	<input type="button" id="preview_btn" value="Preview" /> 
+	
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
