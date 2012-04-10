@@ -1,19 +1,20 @@
 <script>
 $( init );
 
-jQuery.ajaxSetup({ 
-  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-})
-
-jQuery.fn.submitWithAjax = function() {
-  this.submit(function() {
-    $.post(this.action, $(this).serialize(), null, "script");
-    return false;
-  })
-  return this;
-};
-
 function init() {
+	
+	jQuery.ajaxSetup({ 
+	  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+	})
+
+	jQuery.fn.submitWithAjax = function() {
+	  this.submit(function() {
+	    $.post(this.action, $(this).serialize(), null, "script");
+	    return false;
+	  })
+	  return this;
+	};
+	
 	$(".draggable").draggable({
 		helper: "clone"
 	});
@@ -25,12 +26,13 @@ function init() {
 	});
 }
 
+
+
 function thumbnailImage ($item) {	
 	var $list = $("#thumbnail")
 	$list.empty();
-	$.ajax("images/"+ $item.attr('id') + "/thumbnail")
-	
 	jQuery('#article_thumbnail_id').val($item.attr("id"));
+	$.ajax("images/"+ $item.attr('id') + "/thumbnail")
 }
 
 function remove_fields(link) {
@@ -43,6 +45,7 @@ function add_fields(link, association, content) {
   var regexp = new RegExp("new_" + association, "g")
   $(link).parent().before(content.replace(regexp, new_id));
 }
+
 </script>
 
 <style>
@@ -65,7 +68,7 @@ function add_fields(link, association, content) {
 	
 	<div id="thumbnail">
 		<% unless @article.thumbnail_id.nil? then %>
-			<%= link_to (image_tag(@article.thumbnail), edit_article_image_path(@article.id, @article.thumbnail_id)) %>
+			<%= image_submit_tag (@article.thumbnail), :name => 'save' %>
 		<% else %>
 			<%= image_tag "no-image.jpg"%>
 		<% end %>
@@ -97,20 +100,19 @@ function add_fields(link, association, content) {
 	</div>
 	
 	<% for image in @article.images %>
-		<div class="field" id='cropwrap'>
-	  		<%= image_tag image.photo.url(:small), :class => "draggable", :id => image.id %>
-		</div>
+		<%= render 'images/gallery', :image => image %>
 	<% end %>
 	
+	<div class="upload">
 	<%= f.fields_for :images do |builder| %>
-	    <%= builder.file_field :photo %>
+		<%= render 'images/upload', :f => builder%>
 	<% end %>
+	</div>
 	
 	<%= f.hidden_field :thumbnail_id %>
 
 	<div class="actions">
 		<%= f.submit %>
 	</div>
-	
 <% end %>
 

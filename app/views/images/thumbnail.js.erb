@@ -1,1 +1,1 @@
-$("#thumbnail").append("<%= escape_javascript(link_to (image_tag(@image.photo.url(:thumbnail)), edit_article_image_path(@image.article_id, @image.id))) %>");
+$("#thumbnail").append("<%= escape_javascript(image_submit_tag (@image.photo.url(:thumbnail)), :name => 'save') %>");

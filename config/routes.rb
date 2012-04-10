@@ -34,6 +34,7 @@ Autoassist::Application.routes.draw do
     
     resources :articles do
       resources :images do
+        match '/remove' => 'images#remove', :via => :get, :as => :remove
         match '/thumbnail' => 'images#thumbnail', :via => :get, :as => :thumbnail
       end
         member { post :mercury_update }

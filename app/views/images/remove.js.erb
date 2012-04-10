@@ -1,0 +1,4 @@
+var image = $("#<%=h @image.id %>");
+image.parent().fadeOut('slow', function() {
+	image.remove();
+});

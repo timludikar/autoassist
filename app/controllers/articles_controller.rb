@@ -42,4 +42,25 @@ class ArticlesController < InheritedResources::Base
         image = @article.images.build
       end  
     end
+    
+    def update
+      @article = Article.find(params[:id])
+      if @article.update_attributes(params[:article])
+        with_action do |a|
+          a.save
+          a.remove
+          a.any do
+            redirect_to :action => 'show', :id => @article
+          end
+        end
+      else
+        @subjects = Subject.find(:all)
+        render :action => 'edit'
+      end
+    end
+    
+    def save
+      redirect_to edit_article_image_path(@article.id, @article.thumbnail_id) 
+    end
+    
 end

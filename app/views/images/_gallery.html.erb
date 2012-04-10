@@ -1,0 +1,6 @@
+<div class="gallery">
+	<% unless image.id.nil? %>
+		<%= image_tag image.photo.url(:small), :class => "draggable", :id => image.id %>
+		<%= link_to image_tag('delete.png', :width => "15px", :height => "15px"), article_image_remove_path(@article.id, image.id), :remote => true, :class => 'delete_post' %>
+	<% end %>
+</div>
