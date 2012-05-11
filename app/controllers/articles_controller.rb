@@ -38,6 +38,7 @@ class ArticlesController < InheritedResources::Base
     end
     
     def edit
+      @images = Image.find(:all)
       1.times do
         image = @article.images.build
       end  

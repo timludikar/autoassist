@@ -1,0 +1,113 @@
+#images_slideshow {
+	position: relative;
+	margin-top: 10px;
+	overflow-x: scroll; overflow-y: hidden;
+	width: 910px;
+	height: 160px;
+	z-index: 10;
+}
+
+#images_slideshow article {
+	border: 1px solid #999;
+	background-color: #FFF;
+	width: 165px;
+	height: 155px;
+	float: left;
+	margin-right: 16px;
+	
+	border: 2px solid #d5d5d5;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	
+	box-shadow: 1px 1px #d5d5d5;
+	-moz-box-shadow: 1px 1px #d5d5d5;
+	-webkit-box-shadow: 1px 1px #d5d5d5;
+}
+
+#images_slideshow article header {
+	height: 34px;
+	position: relative;
+	overflow: hidden;
+	border-top-radius: 8px;
+	-moz-border-radius-topleft: 8px;
+	-moz-border-radius-topright: 8px;
+	-webkit-border-top-right-radius: 8px;
+	-webkit-border-top-left-radius: 8px;
+	background-image: url(<%= asset_path 'images_slideshow/article_header.png' %>);
+	background-repeat: repeat-x;
+}
+
+#images_slideshow article header h1 {
+	text-align: center;
+	color: #FFF;
+	font-size:14px;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	text-transform: capitalize;
+	line-height: 31px;	
+}
+
+#images_slideshow article img {
+	margin-top: 5px;
+	margin-right: 7.5px;
+	margin-left: 7.5px;
+}
+
+#images_slideshow article p {
+	font-size: 14px;
+	font-weight: normal;
+	margin-top: 1px;
+	margin-right: 7.5px;
+	margin-bottom: 1px;
+	margin-left: 7.5px;
+	text-align: center;
+}
+
+#images_slideshow nav {
+	position: relative;
+	top: -100px;
+	width: 910px;
+	z-index: 1000;
+}
+
+#images_slideshow nav a {
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	
+	display: block;
+	width: 47px;
+	height: 47px;
+	background-image: url(<%= asset_path 'slideshow/article_arrow_background.png' %>);
+	background-repeat: repeat-x;
+}
+
+#images_slideshow nav a img {
+	margin-left: 11px;
+	margin-top: 11px;
+}
+
+#images_slideshow nav a img {
+	margin-left: 11px;
+	margin-top: 11px;
+}
+
+#images_slideshow .prev {
+	float: left;
+	margin-left: 2px;
+}
+
+#images_slideshow .next {
+	float: right;
+	margin-right: 2px;
+}
+
+#images_slideshow .next img {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+	-ms-filter: "FlipH";
+}

@@ -1,0 +1,102 @@
+<%= stylesheet_link_tag "jquery-ui-1.8.19.custom" %>
+
+<style>
+#gallery{
+	position: relative;
+	width: 990px;
+	height: 325px;
+	overflow-y: scroll;
+}
+.image{
+	padding: 5px;
+	height: 170px;
+	width: 150px;
+	float: left;
+}
+
+#fileupload-progress{
+	position: absolute;
+	left: -5px;
+	top: 65px;
+	width: 163px;
+	height: 20px;
+	border: none;
+}
+
+#fileupload-box {
+	position: relative;
+	height: 148px;
+	border: thin dotted #CCC;
+	width: 148px;
+}
+</style>
+<%= form_for Image.new, :html => { :multipart => true, :id => "fileupload", :remote => true  } do |f| %>
+<section id="gallery">
+	<div id="fileupload-box" class="image">
+		<div id="fileupload-progress">
+			<%= f.file_field :photo, :id => 'fileupload-field' %>
+		</div>
+	</div>
+<% end %>
+<%= form_tag multiple_delete_images_path, :method => :delete do %>
+	<% @images.each do |image| %>
+		<div class="image">
+			<%= image_tag image.photo.url(:small), :id => image.id, :class => "draggable" %>
+			<div float="clear">
+			<%= check_box_tag "image_ids[]", image.id %>
+			<%= link_to 'Show', image %>
+			<%= link_to 'Edit', edit_image_path(image) %>
+			<%= link_to 'Destroy', image, :remote => true, :confirm => 'Are you sure?', :method => :delete %>
+			</div>
+		</div>
+	<% end %>
+	</section>
+	<%= submit_tag "Remove Images" %>
+<% end %>
+
+	<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+	<%= javascript_include_tag 'jquery.iframe-transport.js' %>
+	<%= javascript_include_tag 'jquery.fileupload.js' %>
+	<%= javascript_include_tag 'jquery.fileupload-ui.js' %>
+
+	<script type="text/javascript" charset="utf-8">
+		function removeItem (id) {
+			$('div.image').find('img#' + id ).parent().fadeOut("slow", function () {
+				this.remove();
+			});
+		};
+	
+	    $(function ($) {
+		
+			jQuery.ajaxSetup({ 
+			  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
+			})
+
+			jQuery.fn.submitWithAjax = function() {
+			  this.submit(function() {
+			    $.post(this.action, $(this).serialize(), null, "script");
+			    return false;
+			  })
+			  return this;
+			};
+			
+			$('#fileupload').fileupload({
+				autoUpload: true,
+				done: function(e, data) {
+					$.ajax('images/' + data.result.id + '/showimage');
+					$("fileupload-progress").remove();
+					$('input#fileupload-field').show();
+				},
+				start: function(e,data) {
+					$('input#fileupload-field').hide();
+					$("#fileupload-status").append("<div id='fileupload-progress'></div>").html();
+				},
+				progress: function(e,data) {
+					var progress = parseInt(data.loaded/data.total * 100, 10)
+					$("#fileupload-progress").progressbar({
+						value: progress
+					});
+				}
+			});
+	    });
+	</script>

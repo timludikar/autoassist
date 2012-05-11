@@ -26,6 +26,7 @@ gem 'acts_as_list'
 gem 'ancestry'
 gem 'friendly_id'
 gem 'with_action'
+gem 'json'
 
 #Mercury Editor
 gem 'mercury-rails'

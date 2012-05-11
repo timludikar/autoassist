@@ -1,6 +1,28 @@
-<div class="gallery">
-	<% unless image.id.nil? %>
-		<%= image_tag image.photo.url(:small), :class => "draggable", :id => image.id %>
-		<%= link_to image_tag('delete.png', :width => "15px", :height => "15px"), article_image_remove_path(@article.id, image.id), :remote => true, :class => 'delete_post' %>
-	<% end %>
-</div>
+<%= stylesheet_link_tag "images" %>
+<section id='images_slideshow'>
+	<ul>
+		<% @images.each do |image| %>
+			<article>
+				<%= image_tag image.photo.url(:small), :id => image.id, :class => "draggable" %>
+				<p>
+					<%= link_to 'Show', image %>
+					<%= link_to 'Edit', edit_image_path(image) %>
+					<%= link_to 'Destroy', image, :confirm => 'Are you sure?', :method => :delete %>
+				</p>
+			</article>
+		<% end %>
+	</ul>
+	<nav>
+		<a href="#" class="next"><%= image_tag "slideshow/article_arrow.png", :width => "24", :height => "25" %></a>
+		<a href="#" class="prev"><%= image_tag "slideshow/article_arrow.png", :width => "24", :height => "25" %></a>
+	</nav>
+</section>
+<script type="text/javascript">
+    $("#images_slideshow").jCarouselLite({
+ 		speed: 1000,
+		visible: 5,
+        btnNext: ".next",
+        btnPrev: ".prev",
+		scroll: 5
+    });   
+</script>

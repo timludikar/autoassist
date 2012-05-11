@@ -1,6 +1,14 @@
 Autoassist::Application.routes.draw do
   
-  resources :images
+   #match 'images/upload' => 'images#upload', :via => [:post, :get], :as => :upload
+   
+  
+  resources :images do
+    match '/showimage' => 'images#show_image', :via => [:post, :get], :as => :show_image
+    delete 'multiple_delete', :on => :collection
+  end
+  
+
 
   resources :pages
 
@@ -31,13 +39,15 @@ Autoassist::Application.routes.draw do
   
   
     #resources :users #do
+
     
     resources :articles do
       resources :images do
+        match '/add' => 'images#add', :via => :get, :as => :add 
         match '/remove' => 'images#remove', :via => :get, :as => :remove
         match '/thumbnail' => 'images#thumbnail', :via => :get, :as => :thumbnail
       end
-        member { post :mercury_update }
+      member { post :mercury_update }
     end
     
     scope :articles do

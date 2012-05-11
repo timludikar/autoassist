@@ -1,0 +1,7 @@
+var gallery = $("div.image").first();
+gallery.fadeIn("slow", function() {
+	$('<div class="image"><%= escape_javascript(image_tag @image.photo.url(:small), :id => @image.id, :class => "draggable") %> \
+	<%= escape_javascript(link_to 'Show', @image) %> \
+	<%= escape_javascript(link_to 'Edit', edit_image_path(@image)) %> \
+	<%= escape_javascript(link_to 'Destroy', @image, :remote => true, :confirm => 'Are you sure?', :method => :delete) %></div>').insertAfter(this);
+});

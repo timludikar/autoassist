@@ -15,17 +15,22 @@ function init() {
 	  return this;
 	};
 	
-	$(".draggable").draggable({
-		helper: "clone"
-	});
-	
 	$("#thumbnail").droppable({
         drop: function( event, ui ) {
             thumbnailImage( ui.draggable );
         }
 	});
+	
+	$("#upload").droppable({
+		drop: function( event, ui ) {
+			addToGallery( ui.draggable );
+		}
+	});
 }
 
+function addToGallery ($item){
+	$.ajax("images/"+$item.attr('id') + "/add");
+}
 
 
 function thumbnailImage ($item) {	
@@ -49,9 +54,11 @@ function add_fields(link, association, content) {
 </script>
 
 <style>
-.draggable { list-style-type: none; margin: 10px; padding: 0; margin-right: 10px; background: #eee; padding: 5px}
+.draggable { list-style-type: none; margin: 10px; padding: 0; margin-right: 10px; background: #eee; padding: 1px}
 
 #thumbnail { list-style-type: none; margin: 10px; padding: 0; margin-right: 10px; background: #eee; padding: 5px; width: 304px; height:240px}
+
+#upload { height: 150px; width: 150px; background: #eee; padding: 10px; margin: 10px }
 </style>
 
 <%= form_for(@article) do |f| %>
@@ -99,15 +106,26 @@ function add_fields(link, association, content) {
 		<%= f.check_box :visible %>
 	</div>
 	
+	<div id="gallery">
 	<% for image in @article.images %>
-		<%= render 'images/gallery', :image => image %>
+			<% unless image.id.nil? %>
+				<%= image_tag image.photo.url(:small), :class => "draggable", :id => image.id %>
+				<%= link_to image_tag('delete.png', :width => "15px", :height => "15px"), article_image_remove_path(@article.id, image.id), :remote => true, :class => 'delete_post' %>
+			<% end %>
 	<% end %>
+	</div>
 	
-	<div class="upload">
+	<div id="upload">
+		Drop Here to Upload!
+	</div>
+	
+	<%= render 'images/gallery' %>
+	
+	<!-- <div class="upload">
 	<%= f.fields_for :images do |builder| %>
 		<%= render 'images/upload', :f => builder%>
 	<% end %>
-	</div>
+	</div> //-->
 	
 	<%= f.hidden_field :thumbnail_id %>
 

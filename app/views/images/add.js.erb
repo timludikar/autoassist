@@ -1,0 +1,5 @@
+var gallery = $("#gallery");
+gallery.fadeIn('slow', function() {
+	gallery.append("<%= escape_javascript(image_tag @image.photo.url(:small), :class => 'draggable ui-draggable', :id => @image.id) %>");
+	gallery.append("<%= escape_javascript(link_to image_tag('delete.png', :width => '15px', :height => '15px'), article_image_remove_path(@image.article_id, @image.id), :remote => true, :class => 'delete_post') %>");
+});
